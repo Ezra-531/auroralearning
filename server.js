@@ -2,6 +2,11 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
 
+// Add root route handler for health checks
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
