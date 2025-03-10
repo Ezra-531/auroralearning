@@ -34,13 +34,11 @@ primary_region = 'sjc'
 	hard_limit = 25
 	soft_limit = 20
 
-  [[services.http_checks]]
-    path = "/"
-    protocol = "http"
-    port = 8080
+  # Simple TCP check instead of HTTP
+  [[services.tcp_checks]]
     interval = "15s"
-    timeout = "10s"
-    grace_period = "60s"
+    timeout = "2s"
+    grace_period = "10s"
 
 [[vm]]
   memory = '1gb'

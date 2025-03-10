@@ -141,11 +141,13 @@ app.get('/get-devices', (req, res) => {
   });
 });
 
-// Start the server on the port Fly.io provides or default to 8080
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Add a delay before starting to ensure database is ready
+setTimeout(() => {
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}, 5000); // 5 second delay
 
 // Gracefully close the database connection on server shutdown
 process.on('SIGINT', () => {
